@@ -12,21 +12,22 @@
  
   <body class="text-center">
     
-    <main class="form-signin ">
-      <form method="POST" action="/login">
+    <main class="form-signin d-flex justify-content-center align-items-center min-vh-100">
+      <form method="POST" action="/login" class="w-50">
         <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     
         <div class="form-floating">
           <input type="text" class="form-control" name="username" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
+          <label for="floatingInput">Name</label>
         </div>
         <div class="form-floating">
           <input type="password" class="form-control" name="password" placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
     
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-20 btn btn-lg btn-primary mt-5" type="submit">Sign in</button>
+        <button class="w-20 btn btn-lg btn-secondary mt-5" type="button" onclick="window.location.href='{{ url('/') }}'">Back</button>
         <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
         
     @if ($errors->any())

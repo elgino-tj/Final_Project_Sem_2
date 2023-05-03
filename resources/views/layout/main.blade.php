@@ -30,7 +30,10 @@
         </ul>
       </div>
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-primary"onclick="window.location='{{ url('/login') }}'"">Login</button>
+        @if (session()->get('username')==null)
+      <button type="button" class="btn btn-primary"onclick="window.location='{{ url('/login') }}'">Login</button>
+        
+      @endif
       </div>
     </div>
   </nav>

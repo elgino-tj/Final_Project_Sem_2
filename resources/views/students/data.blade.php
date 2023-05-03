@@ -35,6 +35,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <script>
+                        function deleteData(name){
+                            if (confirm("Are you sure to delete " + name + "'s data?")){
+                                document.getElementById("theForm"+name).submit();
+                            }
+                        }
+                    </script>
                     @foreach ($students as $row)
                     <tr>
                         <th>{{ $loop->iteration }}</th>
@@ -48,12 +55,13 @@
                             <button onclick="window.location='{{ url('students/'.$row->idstudents) }}'" type="button" class="btn btn-sm btn-info" title="Edit Data">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <form onsubmit="return deleteData('{{ $row->fullname }}')" style="display : inline" method="POST" action="{{ url('students/'.$row->idstudents) }}">
+                            
+                            <form id="theForm{{ $row->fullname }}" style="display : inline" method="POST" action="{{ url('students/'.$row->idstudents) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" title="Delete Data" class="btn btn-danger btn-sm">
+                                <a onclick="deleteData('{{ $row->fullname }}')" title="Delete Data" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i>
-                                </button>
+                                </a>
                             </form>
                         </td>
                     </tr>
@@ -62,11 +70,5 @@
             </table>
         </div>
      </div>
-<script>
-   function deleteData(name){
-    message = confirm('Are you sure to delete the data?');
-    if(message) return true;
-    else return false;
-   }
-</script>
+
 @endsection

@@ -38,8 +38,8 @@
                 <div class="col-sm-4">
                   <select class="form-select form-select-sm @error('txtgender') is-invalid @enderror" name="txtgender" id="txtgender">
                     <option value="" selected>-Choose-</option>
-                    <option value="M">{{ (old('txtgender')=='M')? 'selected' :''}}Male</option>
-                    <option value="F">{{ (old('txtgender')=='F')? 'selected' :''}}Female</option>
+                    <option value="M" {{ (old('txtgender')=='M')? 'selected' :''}}>Male</option>
+                    <option value="F" {{ (old('txtgender')=='F')? 'selected' :''}}>Female</option>
                   </select>
                   @error('txtgender')
                   <div class="invalid-feedback">
@@ -51,7 +51,7 @@
               <div class="row mb-3">
                 <label for="txtaddress" class="col-sm-2 col-form-label">Address</label>
                 <div class="col-sm-10">
-                  <textarea class="form-control @error('txtaddress') is-invalid @enderror" id="txtaddress" name="txtaddress" cols="30" rows="10" ></textarea>
+                  <textarea class="form-control @error('txtaddress') is-invalid @enderror" id="txtaddress" name="txtaddress" cols="30" rows="10" >{{ old('txtaddress') }}</textarea>
                   @error('txtaddress')
                   <div class="invalid-feedback">
                     {{ $message }}
